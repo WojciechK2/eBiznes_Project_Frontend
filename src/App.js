@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import {Routes, Route} from "react-router-dom";
+import Products from "./ShopComponents/Products/Products";
+import Basket from "./ShopComponents/Basket/Basket";
+import Payments from "./ShopComponents/Payments/Payments";
+import NoPage from "./ShopComponents/NoPage";
+import Product from "./ShopComponents/Products/Product";
+import BasketItem from "./ShopComponents/Basket/BasketItem";
+import Orders from "./ShopComponents/Orders/Orders";
+import OrderItem from "./ShopComponents/Orders/OrderItem";
+import LoginComponent from "./ShopComponents/LoginComponent";
+import pathsStruct from "./Utils/PathsStruct";
+import Layout from "./ShopComponents/GlobalLayout/Layout";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Routes>
+            <Route path={pathsStruct.MainPage} element={<Layout/>}>
+                <Route index element={<Products/>}/>
+                <Route path={pathsStruct.ProductItem} element={<Product/>}/>
+                <Route path={pathsStruct.BasketPage} element={<Basket/>}/>
+                <Route path={pathsStruct.BasketItem} element={<BasketItem/>}/>
+                <Route path={pathsStruct.Payments} element={<Payments/>}/>
+                <Route path={pathsStruct.OrdersPage} element={<Orders/>}/>
+                <Route path={pathsStruct.OrdersItem} element={<OrderItem/>}/>
+            </Route>
+            <Route path={pathsStruct.LoginPage} element={<LoginComponent/>}/>
+            <Route path="*" element={<NoPage/>}/>
+        </Routes>
+    );
 }
 
 export default App;
