@@ -1,8 +1,8 @@
-export function fetchData(url) {
+export async function fetchData(url) {
     try {
-        return fetch(url)
+        return await fetch(url)
             .then((response) => response.json())
-    } catch (error){
+    } catch (error) {
         return error
     }
 }
