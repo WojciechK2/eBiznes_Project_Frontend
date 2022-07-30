@@ -18,6 +18,11 @@ const Layout = () => {
     const [categories, setCategories] = React.useState(null);
     const [basketItems, setBasketItems] = React.useState([])
 
+    const ActionTypes = {
+        addToBasket: 'ADD_TO_BASKET',
+        removeFromBasket: 'REMOVE_FROM_BASKET'
+    }
+
     React.useEffect(() => {
             fetchData(baseURL + "products").then(response => setProducts(response))
             fetchData(baseURL + "categories").then(response => setCategories(response))
@@ -33,7 +38,7 @@ const Layout = () => {
         let searchItem;
 
         switch(actionType) {
-            case 'ADD_TO_BASKET':
+            case ActionTypes.addToBasket:
                 //checking for duplicates
                 searchItem = basketItems.filter(it => it.payload.id === payload.id)
                 if(searchItem.length !== 0) {
@@ -43,7 +48,7 @@ const Layout = () => {
                     setBasketItems([...basketItems, proxyItem])
                 }
                 return;
-            case 'REMOVE_FROM_BASKET':
+            case ActionTypes.removeFromBasket:
                 searchItem = basketItems.filter(it => it.payload.id === payload)
                 console.log(searchItem)
                 if(searchItem[0].quantity > 1){
