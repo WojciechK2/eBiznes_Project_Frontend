@@ -1,6 +1,7 @@
 import React, {useContext, useState} from "react";
 import {basketContext} from "../Contexts/basketContext";
 import BasketItem from "./BasketItem";
+import CheckoutButton from "./CheckoutButton";
 
 
 const Basket = () => {
@@ -43,8 +44,8 @@ const Basket = () => {
             <div className={"totalPrice"}>
                 <p>Total price: {totalPrice}</p>
             </div>
+            <CheckoutButton/>
         </div>
-
     )
 }
 

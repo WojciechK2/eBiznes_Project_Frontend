@@ -30,10 +30,12 @@ const Layout = () => {
             "quantity": 1,
         }
 
+        let searchItem;
+
         switch(actionType) {
             case 'ADD_TO_BASKET':
                 //checking for duplicates
-                var searchItem = basketItems.filter(it => it.payload.id === payload.id)
+                searchItem = basketItems.filter(it => it.payload.id === payload.id)
                 if(searchItem.length !== 0) {
                     searchItem[0].quantity += 1
                     basketItems[searchItem.index] = searchItem
@@ -42,9 +44,8 @@ const Layout = () => {
                 }
                 return;
             case 'REMOVE_FROM_BASKET':
-                var searchItem = basketItems.filter(it => it.payload.id === payload)
-                console.log("removing func", searchItem)
-                console.log(payload)
+                searchItem = basketItems.filter(it => it.payload.id === payload)
+                console.log(searchItem)
                 if(searchItem[0].quantity > 1){
                     searchItem[0].quantity -= 1;
                     basketItem[searchItem.index] = searchItem
