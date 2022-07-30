@@ -35,11 +35,10 @@ const Layout = () => {
             "quantity": 1,
         }
 
-        let searchItem;
+        let searchItem = null;
 
         switch(actionType) {
             case ActionTypes.addToBasket:
-                //checking for duplicates
                 searchItem = basketItems.filter(it => it.payload.id === payload.id)
                 if(searchItem.length !== 0) {
                     searchItem[0].quantity += 1
@@ -49,18 +48,18 @@ const Layout = () => {
                 }
                 return;
             case ActionTypes.removeFromBasket:
-                searchItem = basketItems.filter(it => it.payload.id === payload)
-                console.log(searchItem)
+                searchItem = basketItems.filter(it => it.payload.id === payload.payload.id)
                 if(searchItem[0].quantity > 1){
                     searchItem[0].quantity -= 1;
                     basketItem[searchItem.index] = searchItem
                 } else {
-                    setBasketItems(basketItems.filter(it => it.payload.id !== payload))
+                    setBasketItems(basketItems.filter(it => it.payload.id !== payload.payload.id))
                 }
                 return
             default:
                 return
         }
+
     }
 
     if (!categories) return (<NoPage errorMessage={"Networking issue, categories"}/>)

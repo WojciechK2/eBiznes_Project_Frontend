@@ -3,17 +3,16 @@ import {basketContext} from "../Contexts/basketContext";
 import BasketItem from "./BasketItem";
 import CheckoutButton from "./CheckoutButton";
 
-
 const Basket = () => {
 
     const {basketItems} = useContext(basketContext)
     const [totalPrice, setTotalPrice] = useState(null)
 
     React.useEffect(() => {
-        updateTotalPrice()
-    }, [totalPrice, basketItems])
+        calculateTotalPrice()
+    }, [basketItems,calculateTotalPrice])
 
-    function updateTotalPrice(){
+    function calculateTotalPrice(){
         let price = 0;
         basketItems.forEach((d) => {
             price += (d.payload.price * d.quantity)
@@ -35,7 +34,7 @@ const Basket = () => {
                 <ul>
                     {basketItems.map((d, index) => (
                         <li key={index}>
-                            <BasketItem id={d.payload.id} updateParent={updateTotalPrice}/>
+                            <BasketItem item={d} updateParent={calculateTotalPrice}/>
                         </li>
                     ))
                     }
@@ -48,5 +47,6 @@ const Basket = () => {
         </div>
     )
 }
+
 
 export default Basket;
