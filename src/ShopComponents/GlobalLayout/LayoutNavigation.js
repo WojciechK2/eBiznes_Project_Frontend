@@ -1,9 +1,14 @@
 import {Outlet, Link} from "react-router-dom";
 import pathsStruct from "../../Utils/PathsStruct";
+import {useContext} from "react";
+import {categoryContext} from "../Contexts/categoryContext";
 
 const LayoutNavigation = () => {
+
+    const categories = useContext(categoryContext)
+
     return (
-        <aside className={"sideNavigation"}>
+        <div className={"sideNavigation"}>
             <nav>
                 <ul>
                     <li>
@@ -21,9 +26,19 @@ const LayoutNavigation = () => {
                     <li>
                         <Link to={pathsStruct.LoginPage}>Login</Link>
                     </li>
+                    <li>
+                        <p>Categories</p>
+                        <ul>
+                        {categories.map(d => (
+                            <li key={d.id}>
+                                <Link to={"/category/" + d.id}>{d.name}</Link>
+                            </li>
+                        ))}
+                        </ul>
+                    </li>
                 </ul>
             </nav>
-        </aside>
+        </div>
     )
 };
 

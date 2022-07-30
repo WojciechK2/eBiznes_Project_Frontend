@@ -7,7 +7,9 @@ const pathsStruct = {
     "OrdersPage":"/orders",
     "OrdersItem":"/orders/:id",
     "Payments":"/payments",
-    "LoginPage":"/login"
+    "LoginPage":"/login",
+    "CategoryPage":"/category/:id",
+    "categoryPageBase":"/category"
 }
 
 export default pathsStruct

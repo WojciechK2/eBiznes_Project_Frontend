@@ -1,5 +1,5 @@
-const NoPage = () => {
-    return <h1>404</h1>;
+const NoPage = ({errorMessage}) => {
+    return <h1>{errorMessage}</h1>;
 };
 
 export default NoPage;
