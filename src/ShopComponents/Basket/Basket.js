@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from "react";
+import React, {useContext, useState} from "react";
 import {basketContext} from "../Contexts/basketContext";
 import BasketItem from "./BasketItem";
 
@@ -8,7 +8,7 @@ const Basket = () => {
     const {basketItems} = useContext(basketContext)
     const [totalPrice, setTotalPrice] = useState(null)
 
-    useEffect(() => {
+    React.useEffect(() => {
         let price = 0;
         basketItems.forEach((d) => {
             price += (d.payload.price * d.quantity)
