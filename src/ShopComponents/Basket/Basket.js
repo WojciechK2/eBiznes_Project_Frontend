@@ -16,7 +16,7 @@ const Basket = () => {
         setTotalPrice(price.toFixed(2))
     }, [totalPrice, basketItems])
 
-    const updateTotalPrice = () => {
+    function updateTotalPrice(){
         let price = 0;
         basketItems.forEach((d) => {
             price += (d.payload.price * d.quantity)
