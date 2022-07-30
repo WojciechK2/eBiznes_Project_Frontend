@@ -9,11 +9,7 @@ const Basket = () => {
     const [totalPrice, setTotalPrice] = useState(null)
 
     React.useEffect(() => {
-        let price = 0;
-        basketItems.forEach((d) => {
-            price += (d.payload.price * d.quantity)
-        })
-        setTotalPrice(price.toFixed(2))
+        updateTotalPrice()
     }, [totalPrice, basketItems])
 
     function updateTotalPrice(){
