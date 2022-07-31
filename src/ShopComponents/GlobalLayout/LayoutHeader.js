@@ -1,4 +1,4 @@
-import {Outlet, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import pathsStruct from "../../Utils/PathsStruct";
 
 const LayoutHeader = () => {

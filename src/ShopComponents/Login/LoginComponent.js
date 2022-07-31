@@ -1,14 +1,12 @@
 import LoginLandingPage from "./LoginLandingPage";
-import {useContext, useEffect} from "react";
+import {useContext} from "react";
 import {loggedInContext} from "../Contexts/loggedInContext";
-import {fetchData} from "../../Utils/fetchData";
-import {fetchDataWithCredentials} from "../../Utils/fetchDataWithCredentials";
 
 const baseURL = process.env.REACT_APP_SERVER_URL
 
 const LoginComponent = () => {
 
-    const {loggedIn, setLoggedInValue} = useContext(loggedInContext)
+    const {loggedIn} = useContext(loggedInContext)
 
     let element
     if(!loggedIn){

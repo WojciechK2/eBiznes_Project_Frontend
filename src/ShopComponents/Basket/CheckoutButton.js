@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import pathsStruct from "../../Utils/PathsStruct";
-import {useContext, useEffect} from "react";
+import {useContext} from "react";
 import {loggedInContext} from "../Contexts/loggedInContext";
 
 

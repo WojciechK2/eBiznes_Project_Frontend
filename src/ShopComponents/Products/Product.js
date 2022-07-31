@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import React, {useContext, useState} from "react";
+import React from "react";
 import {fetchData} from "../../Utils/fetchData";
 
 const baseURL = process.env.REACT_APP_SERVER_URL
@@ -13,7 +13,7 @@ const Product = () => {
         fetchData(baseURL + "products/" + id).then((response) => {
             setProduct(response)
         })
-    }, []);
+    }, [id]);
 
     if (!product) return null
 

@@ -1,6 +1,6 @@
 import {Link, useLocation} from "react-router-dom";
 import pathsStruct from "../../Utils/PathsStruct";
-import React, {useEffect} from "react";
+import React from "react";
 
 const ProductCardViewCategoryDisplay = ({category}) => {
 

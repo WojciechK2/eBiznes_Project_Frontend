@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import ProductCardView from "../Products/ProductCardView";
 import {categoryContext} from "../Contexts/categoryContext";
 import {productsContext} from "../Contexts/productsContext";

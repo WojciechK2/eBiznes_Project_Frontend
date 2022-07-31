@@ -1,11 +1,9 @@
 import React, {useContext} from 'react'
 import ProductCardView from "./ProductCardView";
-import {categoryContext} from "../Contexts/categoryContext"
 import {productsContext} from "../Contexts/productsContext"
 
 const Products = () => {
 
-    const categories = useContext(categoryContext)
     const products = useContext(productsContext)
 
     return (

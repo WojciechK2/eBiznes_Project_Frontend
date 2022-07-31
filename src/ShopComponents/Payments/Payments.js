@@ -1,6 +1,5 @@
 import React, {useContext, useState} from "react";
 import {basketContext} from "../Contexts/basketContext";
-import BasketItem from "../Basket/BasketItem";
 
 const Payments = () => {
 
