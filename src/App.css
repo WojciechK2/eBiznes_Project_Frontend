@@ -4,11 +4,10 @@
 
 .sideNavigation {
     background-color: aqua;
-    min-width: 15%;
-    display: block;
+    min-width: 20%;
 }
 
-.productsComponent {
+.productsComponent .paymentsComponent {
     flex-grow: 1;
 }
 
@@ -18,4 +17,14 @@
 
 .productCardView {
     margin: 2%;
+}
+
+.layoutHeader{
+    text-align: center;
+    font-size: large;
+    background-color: black;
+}
+
+.shopLink {
+    color: white;
 }

@@ -1,11 +1,32 @@
-import {Outlet, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import pathsStruct from "../../Utils/PathsStruct";
 import {useContext} from "react";
 import {categoryContext} from "../Contexts/categoryContext";
+import {loggedInContext} from "../Contexts/loggedInContext";
+
+const baseURL = process.env.REACT_APP_SERVER_URL
 
 const LayoutNavigation = () => {
 
     const categories = useContext(categoryContext)
+    const { loggedIn } = useContext(loggedInContext)
+    let LoginButton;
+    let OrdersLink;
+    if (!loggedIn) {
+        LoginButton =
+            <li>
+                <Link to={pathsStruct.LoginPage}>Login</Link>
+            </li>
+    } else {
+        LoginButton =
+            <li>
+                < a href={`${baseURL}logout`}>Logout</a>
+            </li>
+        OrdersLink =
+            <li>
+                <Link to={pathsStruct.OrdersPage}>Order History</Link>
+            </li>
+    }
 
     return (
         <div className={"sideNavigation"}>
@@ -15,25 +36,18 @@ const LayoutNavigation = () => {
                         <Link to={pathsStruct.MainPage}>Home</Link>
                     </li>
                     <li>
-                        <Link to={pathsStruct.Payments}>Payments</Link>
-                    </li>
-                    <li>
                         <Link to={pathsStruct.BasketPage}>Basket</Link>
                     </li>
-                    <li>
-                        <Link to={pathsStruct.OrdersPage}>Orders</Link>
-                    </li>
-                    <li>
-                        <Link to={pathsStruct.LoginPage}>Login</Link>
-                    </li>
+                    {OrdersLink}
+                    {LoginButton}
                     <li>
                         <p>Categories</p>
                         <ul>
-                        {categories.map(d => (
-                            <li key={d.id}>
-                                <Link to={"/category/" + d.id}>{d.name}</Link>
-                            </li>
-                        ))}
+                            {categories.map(d => (
+                                <li key={d.id}>
+                                    <Link to={"/category/" + d.id}>{d.name}</Link>
+                                </li>
+                            ))}
                         </ul>
                     </li>
                 </ul>

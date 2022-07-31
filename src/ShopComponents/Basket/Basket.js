@@ -3,10 +3,12 @@ import {basketContext} from "../Contexts/basketContext";
 import BasketItem from "./BasketItem";
 import CheckoutButton from "./CheckoutButton";
 
+
 const Basket = () => {
 
     const {basketItems} = useContext(basketContext)
     const [totalPrice, setTotalPrice] = useState(null)
+
 
     React.useEffect(() => {
         calculateTotalPrice()

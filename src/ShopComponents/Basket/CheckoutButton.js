@@ -1,11 +1,21 @@
+import {Link} from "react-router-dom";
+import pathsStruct from "../../Utils/PathsStruct";
+import {useContext, useEffect} from "react";
+import {loggedInContext} from "../Contexts/loggedInContext";
+
+
 const CheckoutButton = () => {
 
-    let loggedIn = true
+    const {loggedIn} = useContext(loggedInContext)
 
     if(loggedIn) {
         return (
             <div className={"CheckoutButtonHandler"}>
-                <button className={"checkoutButton"}>Pay For the Goods</button>
+                <button className={"checkoutButton"}>
+                    <Link to={pathsStruct.Payments}>
+                    Checkout
+                    </Link>
+                    </button>
             </div>
         )
     } else {
@@ -13,7 +23,11 @@ const CheckoutButton = () => {
             <div className={"CheckoutButtonHandler"}>
                 <p>Not so fast!</p>
                 <p>Please login first</p>
-                <button className={"LoginButton"}>Login</button>
+                <button className={"LoginButton"}>
+                    <Link to={pathsStruct.LoginPage}>
+                        Login
+                    </Link>
+                </button>
             </div>
         )
     }

@@ -8,29 +8,46 @@ import Product from "./ShopComponents/Products/Product";
 import BasketItem from "./ShopComponents/Basket/BasketItem";
 import Orders from "./ShopComponents/Orders/Orders";
 import OrderItem from "./ShopComponents/Orders/OrderItem";
-import LoginComponent from "./ShopComponents/LoginComponent";
+import LoginComponent from "./ShopComponents/Login/LoginComponent";
 import pathsStruct from "./Utils/PathsStruct";
 import Layout from "./ShopComponents/GlobalLayout/Layout";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Category from "./ShopComponents/Categories/Category";
+import {loggedInContext} from "./ShopComponents/Contexts/loggedInContext";
+import {fetchDataWithCredentials} from "./Utils/fetchDataWithCredentials";
+
+const baseURL = process.env.REACT_APP_SERVER_URL
 
 function App() {
 
+    const [loggedIn, setLoggedIn] = useState(false)
+
+    const setLoggedInValue = (value) =>{
+        setLoggedIn(value)
+    }
+
+    useEffect(() => {
+        fetchDataWithCredentials(baseURL+"checklogin").then(response => {
+            setLoggedInValue(response)})
+    }, [])
+
     return (
-        <Routes>
-            <Route path={pathsStruct.MainPage} element={<Layout/>}>
-                <Route index element={<Products/>}/>
-                <Route path={pathsStruct.ProductItem} element={<Product/>}/>
-                <Route path={pathsStruct.BasketPage} element={<Basket/>}/>
-                <Route path={pathsStruct.BasketItem} element={<BasketItem/>}/>
-                <Route path={pathsStruct.Payments} element={<Payments/>}/>
-                <Route path={pathsStruct.OrdersPage} element={<Orders/>}/>
-                <Route path={pathsStruct.OrdersItem} element={<OrderItem/>}/>
-                <Route path={pathsStruct.CategoryPage} element={<Category />}/>
-            </Route>
-            <Route path={pathsStruct.LoginPage} element={<LoginComponent/>}/>
-            <Route path="*" element={<NoPage errorMessage={"404 no Page Found"}/>}/>
-        </Routes>
+        <loggedInContext.Provider value={ {loggedIn , setLoggedInValue }}>
+            <Routes>
+                <Route path={pathsStruct.MainPage} element={<Layout/>}>
+                    <Route index element={<Products/>}/>
+                    <Route path={pathsStruct.ProductItem} element={<Product/>}/>
+                    <Route path={pathsStruct.BasketPage} element={<Basket/>}/>
+                    <Route path={pathsStruct.BasketItem} element={<BasketItem/>}/>
+                    <Route path={pathsStruct.Payments} element={<Payments/>}/>
+                    <Route path={pathsStruct.OrdersPage} element={<Orders/>}/>
+                    <Route path={pathsStruct.OrdersItem} element={<OrderItem/>}/>
+                    <Route path={pathsStruct.CategoryPage} element={<Category />}/>
+                    <Route path={pathsStruct.LoginPage} element={<LoginComponent/>}/>
+                </Route>
+                <Route path="*" element={<NoPage errorMessage={"404 no Page Found"}/>}/>
+            </Routes>
+        </loggedInContext.Provider>
     );
 }
 

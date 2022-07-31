@@ -9,10 +9,6 @@ const LayoutHeader = () => {
             <div className={"shopTitle"}>
                 <Link to={pathsStruct.MainPage} className={"shopLink"}>ShopTitle</Link>
             </div>
-            <div className={"topNavigation container space-around"}>
-                <Link to={pathsStruct.BasketPage} className={"BasketLink"}>Basket</Link>
-                <Link to={pathsStruct.LoginPage} className={"LoginLink"}> Login</Link>
-            </div>
         </header>
     )
 }
