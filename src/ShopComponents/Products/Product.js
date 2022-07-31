@@ -20,10 +20,9 @@ const Product = () => {
     return(
         <div className={"specificProduct"}>
             <h1>Specific Product Page</h1>
-            <p>My name is: {product.name}</p>
-            <p>My description is: {product.description}</p>
-            <p>My price is: {product.price}</p>
-            <p>My category reference is: {product.categoryReference}</p>
+            <p>Name: {product.name}</p>
+            <p>Description: {product.description}</p>
+            <p>Price: {product.price}</p>
         </div>
     )
 }

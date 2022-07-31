@@ -39,7 +39,7 @@ const Payments = () => {
                     <p>Total price: {totalPrice}</p>
                 </div>
                 <div className={"payButton"}>
-                    <button onClick={initializePaymentTransaction}>Pay For The Goods</button>
+                    <button onClick={initializePaymentTransaction}>OK? Pay For The Goods</button>
                 </div>
             </div>
         </div>
